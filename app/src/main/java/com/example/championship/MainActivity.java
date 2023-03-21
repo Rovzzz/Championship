@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         protected List<Quote> doInBackground(Void... voids) {
             List<Quote> quoteList = new ArrayList<Quote>();
             try {
-                // создаем соединение
+                // Создание соединения
                 URL url = new URL("http://mskko2021.mad.hakta.pro/api/quotes");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     br.close();
                     JSONObject response = new JSONObject(sb.toString());
-                    // Обработка ответа сервера
 
+                    // Обработка ответа сервера
                     JSONArray json_array = new JSONArray(response.getString("data"));
                     for (int i = 0; i < json_array.length(); i++) {
                         JSONObject json_object = json_array.getJSONObject(i);
@@ -101,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
                         quote.description = json_object.getString("description");
                         quoteList.add(quote);
                     }
-                    //Заполняем список
+
+                    //Заполнение списка
                     LVAdapter adapter = new LVAdapter(MainActivity.this,quoteList);
                     listView.setAdapter(adapter);
 
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         protected List<Feeling> doInBackground(Void... voids) {
             List<Feeling> feelingList = new ArrayList<Feeling>();
             try {
-                // создаем соединение
+                // Создание соединения
                 URL url = new URL("http://mskko2021.mad.hakta.pro/api/feelings");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -163,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                         feeling.position = json_object.getInt("position");
                         feelingList.add(feeling);
                     }
-                    //Заполняем список
+                    //Заполнение списка
                     RVAdapter adapter = new RVAdapter(feelingList);
                     recyclerView.setAdapter(adapter);
 

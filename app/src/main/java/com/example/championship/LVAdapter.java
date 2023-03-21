@@ -30,12 +30,10 @@ public class LVAdapter extends ArrayAdapter<Quote> {
 
         Quote myObject = myObjects.get(position);
 
-        // Получение View-элементов из макета my_object_layout.xml
         TextView title = convertView.findViewById(R.id.title);
         TextView description = convertView.findViewById(R.id.description);
         ImageView image = convertView.findViewById(R.id.image);
 
-        // Заполнение View-элементов данными из myObject
         title.setText(myObject.title);
         description.setText(myObject.description);
         Picasso.get().load(myObject.image).into(image);

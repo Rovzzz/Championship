@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Получаем объект SharedPreferences
+        // Получение объекты
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String email = sharedPreferences.getString("email", "");
         super.onCreate(savedInstanceState);
@@ -55,17 +55,17 @@ public class LoginActivity extends AppCompatActivity {
                     postData.put("email", email);
                     postData.put("password", password);
 
-                    // создаем соединение
+                    // Создание соединения
                     URL url = new URL("http://mskko2021.mad.hakta.pro/api/user/login");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoOutput(true);
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json");
-                    // отправляем данные на сервер
+                    // Отправление данных на сервер
                     OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
                     writer.write(postData.toString());
                     writer.flush();
-                    // получаем ответ от сервера
+                    // Получен ответ от сервера
                     StringBuilder sb = new StringBuilder();
                     int HttpResult = conn.getResponseCode();
                     if (HttpResult == HttpURLConnection.HTTP_OK) {
@@ -77,14 +77,14 @@ public class LoginActivity extends AppCompatActivity {
                         br.close();
                         JSONObject response = new JSONObject(sb.toString());
 
-                        // Получаем объект SharedPreferences
+                        // Получен объект
                         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                        // Получаем объект Editor для редактирования SharedPreferences
+                        // Получен объект Editor для редактирования
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        // Сохраняем данные о пользователе
+                        // Сохранение данных о пользователе
                         editor.putString("password", String.valueOf(password));
                         editor.putString("email", String.valueOf(email));
-                        // Применяем изменения
+                        // Принятие изменений
                         editor.apply();
 
                         User.Id = response.getString("id");
@@ -108,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void GoReg(View v){
-        //Intent intent = new Intent(Onboarding.this,Reg.class);
-        // startActivity(intent);
+
     }
 }

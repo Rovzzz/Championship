@@ -41,7 +41,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class ProfileActivity extends AppCompatActivity {
-    //ListView photoList1;
     GridView photoList;
     private static final int REQUEST_CODE_SELECT_IMAGE = 100;
 
@@ -66,13 +65,11 @@ public class ProfileActivity extends AppCompatActivity {
     public void UnLogin(View v){
         Intent intent = new Intent(ProfileActivity.this,LoginActivity.class);
         startActivity(intent);
-        // Получаем объект SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        // Получаем объект Editor для редактирования SharedPreferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        // Сохраняем данные о пользователе
+        // Сохранение данных о пользователе
         editor.putString("password", "");
-        // Применяем изменения
+        // Принятие измененений
         editor.apply();
     }
 
@@ -86,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
             byte[] buffer = new byte[size];
             fileInputStream.read(buffer);
             fileInputStream.close();
-            String jsonString = new String(buffer, "UTF-8");// в этой строке jsonString будет содержать JSON-массив
+            String jsonString = new String(buffer, "UTF-8");
             JSONArray json_array = new JSONArray(jsonString);
             return json_array;
         } catch (Exception e) {
@@ -149,7 +146,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void chooseImage() {
-        // открываем галерею для выбора изображения
+        // Открытие галереи для выбора изображения
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE);
     }

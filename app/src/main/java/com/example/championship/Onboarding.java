@@ -22,8 +22,7 @@ public class Onboarding extends AppCompatActivity {
     }
 
     public void GoReg(View v){
-      //Intent intent = new Intent(Onboarding.this,Reg.class);
-        // startActivity(intent);
+
     }
 
 }

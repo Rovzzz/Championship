@@ -90,8 +90,6 @@ public class MyAdapter extends ArrayAdapter<Photo> {
                 public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     mActivity.startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE);
-                    //Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    //startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE);
                 }
             });
         } else {

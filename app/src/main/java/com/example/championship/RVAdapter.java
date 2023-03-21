@@ -21,14 +21,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
         this.myObjects = myObjects;
     }
 
-    // Создание нового элемента списка (вызывается LayoutManager'ом)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_item, parent, false);
         return new ViewHolder(view);
     }
 
-    // Заполнение данных элемента списка (вызывается LayoutManager'ом)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Feeling myObject = myObjects.get(position);
@@ -36,13 +34,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
         Picasso.get().load(myObject.image).into(holder.imageView);
     }
 
-    // Получение количества элементов списка
     @Override
     public int getItemCount() {
         return myObjects.size();
     }
 
-    // Класс ViewHolder, содержит ссылки на виджеты элемента списка
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
         public ImageView imageView;

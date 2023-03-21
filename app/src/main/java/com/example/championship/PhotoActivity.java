@@ -84,16 +84,13 @@ public class PhotoActivity extends AppCompatActivity implements GestureDetector.
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        // Определяем направление жеста по скорости по оси X
         if (Math.abs(velocityX) > Math.abs(velocityY)) {
             if (velocityX > 0) {
-                // Слева направо - закрытие окна
                 Intent intent = new Intent(PhotoActivity.this,ProfileActivity.class);
                 startActivity(intent);
 
             } else {
 
-                // Справа налево - удаление фотографии
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Удалить изображение");
                 builder.setMessage("Вы уверены, что хотите удалить это изображение?");
