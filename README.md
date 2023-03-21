@@ -1,1 +1,1 @@
-# Championship
+# Championship - Весь проект на ветке main
